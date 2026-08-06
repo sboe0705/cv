@@ -40,6 +40,7 @@
   .rail,
   .actions,
   .legal-links,
+  .legal,
   .contact-cta {
     display: none !important;
   }

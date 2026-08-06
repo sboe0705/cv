@@ -155,6 +155,20 @@ Adding mobile support should therefore be one `@media (max-width: 900px)` block 
 plus the two tokens, with **no markup changes**. Also update `<meta name="viewport">` in
 `index.html`, which is currently pinned to `width=1180`.
 
+## Legal content
+
+`src/data/legal.ts` holds the Impressum and privacy notice, separate from `cv.ts` because it is
+legal prose that changes for entirely different reasons. It follows the same `Localized<T>`
+pattern.
+
+The privacy notice makes specific factual claims about this site: no cookies, no external
+fonts or CDNs, no analytics, and exactly one local-storage key (`cv.lang`). **Those claims must
+stay true.** Adding a third-party script, a hosted font, an embed or a contact form makes the
+published text inaccurate — update `legal.ts` in the same change.
+
+`owner.address` is still a `TODO` placeholder; the site must not be published until it is
+filled in.
+
 ## Content constraints from the handoff
 
 - Timeline copy paraphrases the employers' reference letters. Keep it neutral — the user

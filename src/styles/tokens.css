@@ -47,6 +47,7 @@
   --ink-50: rgba(32, 30, 29, 0.5);
   --ink-55: rgba(32, 30, 29, 0.55);
   --ink-60: rgba(32, 30, 29, 0.6);
+  --ink-88: rgba(32, 30, 29, 0.88); /* legal prose — quieter than body, still readable */
 
   --hairline-10: rgba(32, 30, 29, 0.1);
   --hairline-12: rgba(32, 30, 29, 0.12);

@@ -107,6 +107,22 @@ of EXIF, so no camera model or timestamp ships with the page.
 To replace it, regenerate both files at 640×760 from the original and keep the filenames — no
 code change needed. The source lives in `design_handoff_lebenslauf_vue/sebastian-boehm.jpg`.
 
+## Impressum and privacy notice
+
+Both live in `src/data/legal.ts` (German and English) and render as two collapsible sections
+above the footer, with the ids `#impressum` and `#datenschutz` that the footer links point at.
+The links are plain anchors, so they still work without JavaScript; with JavaScript the
+targeted section also expands.
+
+The privacy notice describes what this site actually does rather than generic boilerplate —
+GitHub Pages server logs, the `cv.lang` local-storage entry, self-hosted fonts, no cookies and
+no tracking. **If you change how the site works, update it.** In particular: adding any
+third-party embed, analytics, a contact form or a web font from a CDN would make the current
+text wrong.
+
+The German version is the legally binding one; the English is marked as a convenience
+translation. Neither has been reviewed by a lawyer — see the checklist below.
+
 ## Colours
 
 The palette is led by a steel blue (`#17607f`) with a graphite second voice and a light
@@ -135,9 +151,12 @@ The production build uses `/cv/` as its base path (matching the repository name)
 
 ## Before publishing — outstanding items
 
-- [ ] **Impressum and privacy notice.** The footer links point at `#impressum` and
-      `#datenschutz`, which do not exist yet. A German-hosted personal site normally needs
-      both — write the pages and update `ui.<lang>.legal` in `cv.ts`.
+- [ ] **Postal address for the Impressum.** `src/data/legal.ts` exports `owner.address`,
+      which still reads `TODO: Straße und Hausnummer` / `TODO: PLZ und Ort`. Until that is
+      filled in, the Impressum is not legally valid — **do not publish the site before
+      replacing it.** § 5 DDG requires a *ladungsfähige Anschrift*, an address where legal
+      mail can be served; a P.O. box does not qualify. The value is used in both the Impressum
+      and the privacy notice's controller section, so one edit covers both.
 
 ## Design source
 
