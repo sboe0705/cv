@@ -1,0 +1,96 @@
+/*
+ * Design tokens — taken verbatim from the handoff's token tables
+ * (design_handoff_lebenslauf_vue/README.md, "Design Tokens").
+ *
+ * Component CSS must reference these variables, never raw hex values. That is
+ * what makes a palette change a one-file change.
+ */
+:root {
+  /* — colour: steel blue, the primary voice —
+     The handoff's 2a design led with green (#2f9c62) and used blue as its
+     second voice. That was changed deliberately once the real portrait
+     arrived: the photograph contains no green at all (measured: 0.00% green
+     pixels) and is built from a charcoal suit, a silver tie and a cornflower
+     shirt. Leading with the design's own blue ties the page to the portrait
+     and fixes an accessibility defect — white 14px bold on the old green was
+     3.47:1, below the 4.5:1 WCAG AA threshold. Every value below clears it. */
+  --accent-base: #17607f; /* primary button, rail fill, active chip/lang, contact band — 6.96:1 on white */
+  --accent-deep: #10485e; /* open timeline entry, AI band, primary button hover — 9.95:1 on white */
+  --accent-soft: #2f9fc9; /* secondary button hover border — decorative only, never behind text */
+  --accent-tint: #e7f2f8; /* about + languages cards, kicker, kind pill, lang switch */
+
+  /* — colour: the highlight —
+     The shirt from the portrait: a light cornflower blue, measured at hue 224°
+     from the lit collar and nudged to 216° so it sits in the same family as
+     --accent-base (198°) instead of leaning violet against it.
+
+     It is a HIGHLIGHT, not an accent: too light to carry white text and almost
+     invisible as a hairline on the page ground (1.68:1). Use it only two ways —
+     as a fill behind dark ink (9.33:1), or as text and rules on the deep blue
+     panels (5.59:1), which is exactly how the shirt reads against the suit.
+     Never put it behind white text. */
+  --highlight: #a8c4ee;
+
+  /* — colour: graphite, the second voice —
+     Taken from the suit and tie. It grounds the Skills and Hobbies cards, which
+     the original design set in green tint. Blue and graphite sit at nearly the
+     same lightness and are told apart by saturation (55% vs 16%) — the same
+     trick the handoff used with its two tints, which differed by hue instead. */
+  --support-tint: #e9ecef;
+
+  /* — colour: grounds and ink — */
+  --card-ground: #fbfaf9; /* closed timeline entry */
+  --page-card: #faf8f6; /* page shell, pills on tinted grounds */
+  --page-ground: #e6e4e4; /* outside the page card */
+  --ink: #201e1d;
+
+  --ink-50: rgba(32, 30, 29, 0.5);
+  --ink-55: rgba(32, 30, 29, 0.55);
+  --ink-60: rgba(32, 30, 29, 0.6);
+
+  --hairline-10: rgba(32, 30, 29, 0.1);
+  --hairline-12: rgba(32, 30, 29, 0.12);
+  --hairline-14: rgba(32, 30, 29, 0.14);
+  --hairline-18: rgba(32, 30, 29, 0.18);
+
+  /* — colour: on dark fills — */
+  --on-dark: #fff;
+  --on-dark-90: rgba(255, 255, 255, 0.9);
+  --on-dark-70: rgba(255, 255, 255, 0.7);
+  --on-dark-rule-band: rgba(255, 255, 255, 0.28);
+  --on-dark-fill-10: rgba(255, 255, 255, 0.1);
+  --on-dark-fill-12: rgba(255, 255, 255, 0.12);
+  --on-dark-fill-22: rgba(255, 255, 255, 0.22);
+
+  /* — typography — */
+  --font: 'Archivo', system-ui, sans-serif;
+
+  /* — radii — */
+  --radius-pill: 999px;
+  --radius-shell: 28px;
+  --radius-card: 24px;
+  --radius-entry: 22px;
+  --radius-chip: 16px;
+
+  /* — elevation — */
+  --shadow-entry: 0 1px 2px rgba(32, 30, 29, 0.07);
+  --shadow-entry-hover: 0 2px 6px rgba(32, 30, 29, 0.1);
+  --shadow-shell: 0 1px 3px rgba(32, 30, 29, 0.1);
+
+  /* — layout —
+     The page is desktop-only per the handoff: a fixed 1180px card. These two
+     tokens are the seam for a mobile layout later — see CLAUDE.md. */
+  --shell-width: 1180px;
+  --section-pad-x: 40px;
+
+  /* — motion — */
+  --ease-reveal: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --duration-reveal: 200ms;
+}
+
+/* Honour the system setting: the reveal collapses to an instant change. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-reveal: 0ms;
+  }
+}
