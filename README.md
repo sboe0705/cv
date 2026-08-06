@@ -107,18 +107,23 @@ of EXIF, so no camera model or timestamp ships with the page.
 To replace it, regenerate both files at 640×760 from the original and keep the filenames — no
 code change needed. The source lives in `design_handoff_lebenslauf_vue/sebastian-boehm.jpg`.
 
-## Impressum and privacy notice
+## Impressum and privacy
 
-Both live in `src/data/legal.ts` (German and English) and render as two collapsible sections
-above the footer, with the ids `#impressum` and `#datenschutz` that the footer links point at.
-The links are plain anchors, so they still work without JavaScript; with JavaScript the
-targeted section also expands.
+One document in `src/data/legal.ts` (German and English), shown in a modal dialog that the
+footer link opens. The privacy information is a section inside it rather than a separate page —
+the GDPR does not require a separate page, only that the information be easily accessible
+(Art. 12(1)) — which is why the footer link is labelled "Impressum & Datenschutz" and not just
+"Impressum": the privacy part has to stay findable.
 
-The privacy notice describes what this site actually does rather than generic boilerplate —
-GitHub Pages server logs, the `cv.lang` local-storage entry, self-hosted fonts, no cookies and
-no tracking. **If you change how the site works, update it.** In particular: adding any
-third-party embed, analytics, a contact form or a web font from a CDN would make the current
-text wrong.
+What could **not** be reduced to a link to GitHub's policy: the controller here is the site
+owner, not GitHub, so the Art. 13 duties — purpose, legal basis, data subject rights, right to
+complain — have to be met on this page. GitHub's statement is linked as supplementary detail
+about the host's own processing.
+
+The text describes what this site actually does rather than generic boilerplate: GitHub Pages
+server logs, the `cv.lang` local-storage entry, self-hosted fonts, no cookies, no tracking.
+**If you change how the site works, update it** — adding an embed, analytics, a contact form or
+a CDN web font would make the published text wrong.
 
 The German version is the legally binding one; the English is marked as a convenience
 translation. Neither has been reviewed by a lawyer — see the checklist below.

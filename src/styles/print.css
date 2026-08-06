@@ -39,8 +39,8 @@
   .filter,
   .rail,
   .actions,
-  .legal-links,
-  .legal,
+  .legal-link,
+  .legal-dialog,
   .contact-cta {
     display: none !important;
   }

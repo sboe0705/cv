@@ -91,10 +91,9 @@ export interface NavStrings {
 }
 
 export interface LegalStrings {
-  imprintLabel: string
-  imprintHref: string
-  privacyLabel: string
-  privacyHref: string
+  /** Footer link that opens the legal dialog. Names privacy too, so the
+   *  privacy information stays findable — see src/data/legal.ts. */
+  label: string
   copyright: string
 }
 

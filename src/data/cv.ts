@@ -146,10 +146,7 @@ export const cv: CvData = {
         },
       ],
       legal: {
-        imprintLabel: 'Impressum',
-        imprintHref: '#impressum',
-        privacyLabel: 'Datenschutz',
-        privacyHref: '#datenschutz',
+        label: 'Impressum & Datenschutz',
         copyright: 'Sebastian Böhm',
       },
     },
@@ -268,10 +265,7 @@ export const cv: CvData = {
         },
       ],
       legal: {
-        imprintLabel: 'Imprint',
-        imprintHref: '#impressum',
-        privacyLabel: 'Privacy',
-        privacyHref: '#datenschutz',
+        label: 'Legal notice & privacy',
         copyright: 'Sebastian Böhm',
       },
     },

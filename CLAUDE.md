@@ -157,9 +157,22 @@ plus the two tokens, with **no markup changes**. Also update `<meta name="viewpo
 
 ## Legal content
 
-`src/data/legal.ts` holds the Impressum and privacy notice, separate from `cv.ts` because it is
-legal prose that changes for entirely different reasons. It follows the same `Localized<T>`
-pattern.
+`src/data/legal.ts` holds the Impressum with the privacy information as a section inside it,
+separate from `cv.ts` because it is legal prose that changes for entirely different reasons. It
+follows the same `Localized<T>` pattern and renders in `LegalDialog.vue`, a native `<dialog>`
+opened from the footer via `useLegalDialog`.
+
+Two things there are deliberate, not oversights:
+
+- **The privacy information is not a separate page.** The GDPR requires it to be "easily
+  accessible" (Art. 12(1)), not separately hosted. That is also why the footer link reads
+  "Impressum & Datenschutz" — if it said only "Impressum", the privacy part would be hidden.
+- **It cannot shrink to a link to GitHub's policy.** The controller is the site owner, not
+  GitHub, so the Art. 13 duties are owed here. GitHub's statement is linked as supplementary
+  detail only.
+
+The dialog uses `showModal()` for the focus trap, Escape handling and `::backdrop`. Modal
+dialogs render in the top layer, so `.page-shell`'s `overflow: hidden` does not clip it.
 
 The privacy notice makes specific factual claims about this site: no cookies, no external
 fonts or CDNs, no analytics, and exactly one local-storage key (`cv.lang`). **Those claims must

@@ -3,7 +3,7 @@ import AboutSection from '@/components/AboutSection.vue'
 import AiBand from '@/components/AiBand.vue'
 import ContactBand from '@/components/ContactBand.vue'
 import HeroSection from '@/components/HeroSection.vue'
-import LegalSections from '@/components/LegalSections.vue'
+import LegalDialog from '@/components/LegalDialog.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 import SiteHeader from '@/components/SiteHeader.vue'
 import SkillsSection from '@/components/SkillsSection.vue'
@@ -24,8 +24,8 @@ const { lang, t } = useLanguage()
       <SkillsSection id="skills" />
       <ContactBand id="kontakt" />
     </main>
-    <LegalSections />
     <SiteFooter :legal="t.legal" />
+    <LegalDialog />
   </div>
 </template>
 
