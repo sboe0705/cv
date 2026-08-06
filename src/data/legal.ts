@@ -14,10 +14,8 @@ import type { Localized } from './types'
  * right) have to be met on this page. GitHub's statement is linked as
  * supplementary detail about the host's own processing.
  *
- * IMPORTANT: `owner.address` is a placeholder. § 5 DDG requires a
- * ladungsfähige Anschrift (an address where legal mail can be served); a
- * P.O. box is not sufficient. The Impressum is not valid until it is filled
- * in. See README.md.
+ * `owner.address` must stay a ladungsfähige Anschrift — an address where legal
+ * mail can be served (§ 5 DDG). A P.O. box does not qualify.
  */
 
 export interface LegalLink {
@@ -38,10 +36,11 @@ export interface LegalDocument {
   blocks: LegalBlock[]
 }
 
-/** The one place to put the real postal address. */
+/** The one place to change the postal address — used in the Impressum and as
+ *  the controller in the privacy section. */
 export const owner = {
   name: 'Sebastian Böhm',
-  address: ['TODO: Straße und Hausnummer', 'TODO: PLZ und Ort', 'Deutschland'],
+  address: ['Karlsruher Straße 26', '70771 Echterdingen', 'Deutschland'],
   email: 'sboe0705@icloud.com',
 }
 

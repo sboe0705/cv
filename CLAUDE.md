@@ -179,8 +179,8 @@ fonts or CDNs, no analytics, and exactly one local-storage key (`cv.lang`). **Th
 stay true.** Adding a third-party script, a hosted font, an embed or a contact form makes the
 published text inaccurate — update `legal.ts` in the same change.
 
-`owner.address` is still a `TODO` placeholder; the site must not be published until it is
-filled in.
+`owner.address` must remain a *ladungsfähige Anschrift* (§ 5 DDG) — an address where legal mail
+can be served. A P.O. box does not qualify.
 
 ## Content constraints from the handoff
 

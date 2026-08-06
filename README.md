@@ -154,14 +154,15 @@ under **Settings → Pages → Source → GitHub Actions**.
 The production build uses `/cv/` as its base path (matching the repository name) — see
 `vite.config.ts`. If you rename the repository or move to a custom domain, change `base` there.
 
-## Before publishing — outstanding items
+## Before publishing
 
-- [ ] **Postal address for the Impressum.** `src/data/legal.ts` exports `owner.address`,
-      which still reads `TODO: Straße und Hausnummer` / `TODO: PLZ und Ort`. Until that is
-      filled in, the Impressum is not legally valid — **do not publish the site before
-      replacing it.** § 5 DDG requires a *ladungsfähige Anschrift*, an address where legal
-      mail can be served; a P.O. box does not qualify. The value is used in both the Impressum
-      and the privacy notice's controller section, so one edit covers both.
+The content is complete — real contact details, real address in the Impressum, portrait in
+place. Two things are worth a look before or shortly after going live:
+
+- **Enable GitHub Pages** once, under *Settings → Pages → Source → GitHub Actions*. Until then
+  the deploy workflow has nothing to publish to.
+- **The legal text has not been reviewed by a lawyer.** It is carefully matched to what this
+  site actually does, but if you want certainty, this is the point to have it checked.
 
 ## Design source
 
