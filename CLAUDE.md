@@ -190,22 +190,43 @@ second rendering instead:
   (A build served by `npm run preview` does not mount under headless Chrome; use the dev
   server. If Chrome is a flatpak, it can only write inside `~/Downloads` and friends.)
 
-## Desktop-only, and the seam for mobile
+## Desktop-first, with a mobile layout underneath
 
-The handoff specifies desktop-only at a fixed **1180px** with no breakpoints; the page scrolls
-horizontally on narrow screens rather than reflowing. That is the current, deliberate state.
+The handoff specifies a fixed **1180px** desktop layout, and that layout is authoritative: it is
+the design that was approved and it must stay unchanged. Mobile support was added underneath it
+without touching a single desktop declaration.
 
-A mobile layout is planned but not built. The groundwork is in place:
+### The rules
 
-- `--shell-width` and `--section-pad-x` in `tokens.css` drive the shell and every section's
-  horizontal padding.
-- Every multi-column layout is declared once, in one component's scoped CSS: hero `1fr 320px`,
-  About `200px 1fr`, AI band `1fr 1fr`, timeline entry `120px 1fr`, entry bullets `1fr 1fr`,
-  skills `1fr 340px`, skill groups `1fr 1fr`, contact grid `1fr 1fr`.
+- **Every mobile rule lives in a `@media screen and (max-width: …)` block**, appended at the end
+  of the component's own `<style scoped>`. Nothing outside a media block was changed. That is
+  what makes "did this affect desktop?" a question you can answer by reading the diff.
+- **`screen and` is not decorative.** A4 minus its 16mm margins is a ~673px page box, so a bare
+  `(max-width: 900px)` also matches while printing and would leak into `CvDocument.vue`.
+- **No markup changed, and no JS.** `useScrollProgress` reads only `window.innerHeight` and
+  already re-measures on `resize`.
 
-Adding mobile support should therefore be one `@media (max-width: 900px)` block per component
-plus the two tokens, with **no markup changes**. Also update `<meta name="viewport">` in
-`index.html`, which is currently pinned to `width=1180`.
+### The three tiers
+
+| Range | What happens |
+| --- | --- |
+| ≥ 1180px | The desktop layout, untouched. |
+| 901–1179px | `.page-shell` is `width: min(var(--shell-width), 100%)`, so the card goes fluid while every desktop grid stays as it is. At ≥ 1180px that expression computes to exactly `1180px` — this is why the fluid shell needs no media query and cannot affect desktop. |
+| ≤ 900px | The structural tier: every multi-column grid collapses to one column, `--section-pad-x` drops to 24px, the scroll rail slims from 40px of gutter to 20px, and `.lang-button` grows past the 24px minimum tap target. |
+| ≤ 560px | The phone tier: the shell goes full-bleed (no margin, radius or shadow), the header wraps to two rows, display type steps down (hero 58→34px, entry year 40→26px), `--section-pad-x` drops to 16px, and the last two-column grids (entry bullets, skill groups, contact grid) collapse. |
+
+### What to watch when editing
+
+- **`--section-pad-x` does not reach the tinted cards.** About, the AI band, Skills, Hobbies,
+  Languages, the timeline entry and the contact band all hard-code their own horizontal padding
+  (the handoff's exact numbers). Each therefore carries its own padding override in its mobile
+  block — if you add a card, give it one too.
+- **`.entry-detail`'s `grid-template-rows: 0fr → 1fr` is the reveal mechanism.** Collapsing
+  `.entry`'s *columns* on mobile is fine; never touch its rows.
+- `<meta name="viewport">` in `index.html` is `width=device-width, initial-scale=1`. Desktop
+  browsers ignore the viewport meta entirely, which is the other half of why this is safe.
+- Verify at 1440, 1180, 1024, 900, 768, 560, 375 and 320px, in **both languages** — DE and EN
+  string lengths differ — and with a timeline entry **open**, which is the widest state.
 
 ## Legal content
 

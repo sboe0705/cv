@@ -188,4 +188,26 @@ onBeforeUnmount(() => {
 .legal-link:hover {
   border-color: var(--accent-base);
 }
+
+@media screen and (max-width: 560px) {
+  .legal-dialog {
+    max-width: calc(100vw - 24px);
+    /* dvh, not vh: a mobile browser's collapsing toolbar would otherwise push
+       the bottom of the dialog off screen. Identical to vh on desktop. */
+    max-height: calc(100dvh - 48px);
+  }
+
+  .legal-head {
+    padding: 22px 20px 14px;
+  }
+
+  .legal-close {
+    width: 40px;
+    height: 40px;
+  }
+
+  .legal-body {
+    padding: 18px 20px 24px;
+  }
+}
 </style>

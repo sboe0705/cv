@@ -48,4 +48,15 @@ function openLegal(event: MouseEvent) {
   color: var(--accent-base);
   border-color: var(--accent-base);
 }
+
+@media screen and (max-width: 560px) {
+  .site-footer {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .legal-link {
+    padding: 4px 0;
+  }
+}
 </style>

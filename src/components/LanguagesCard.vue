@@ -52,4 +52,10 @@ defineProps<{
   color: var(--ink-60);
   font-size: 12.5px;
 }
+
+@media screen and (max-width: 560px) {
+  .languages {
+    padding: 22px 18px;
+  }
+}
 </style>

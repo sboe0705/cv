@@ -79,8 +79,9 @@
   --shadow-shell: 0 1px 3px rgba(32, 30, 29, 0.1);
 
   /* — layout —
-     The page is desktop-only per the handoff: a fixed 1180px card. These two
-     tokens are the seam for a mobile layout later — see CLAUDE.md. */
+     The page is desktop-first per the handoff: a 1180px card. The shell caps
+     itself at this width and goes fluid below it; --section-pad-x is stepped
+     down in the two mobile tiers at the bottom of this file. See CLAUDE.md. */
   --shell-width: 1180px;
   --section-pad-x: 40px;
 
@@ -93,5 +94,20 @@
 @media (prefers-reduced-motion: reduce) {
   :root {
     --duration-reveal: 0ms;
+  }
+}
+
+/* The two mobile tiers. Every mobile rule in this project is scoped to
+   `screen`: A4 minus its 16mm margins is a ~673px page box, so a bare
+   (max-width: 900px) would also match while printing. */
+@media screen and (max-width: 900px) {
+  :root {
+    --section-pad-x: 24px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  :root {
+    --section-pad-x: 16px;
   }
 }

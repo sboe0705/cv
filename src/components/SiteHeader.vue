@@ -61,4 +61,29 @@ const brand = cv.meta.name.toUpperCase().replace(' ', ' ')
 .nav a:hover {
   color: var(--accent-base);
 }
+
+/* Brand + three anchors + the language switch do not fit on one phone row.
+   Wrapping .header-right to full width breaks it into two rows without any
+   markup change: brand above, navigation and switch below. */
+@media screen and (max-width: 560px) {
+  .site-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .nav {
+    gap: 18px;
+  }
+
+  .nav a {
+    /* A 12.5px line is a 12px tap target; padding brings it past 24px. */
+    padding: 6px 0;
+  }
+}
 </style>

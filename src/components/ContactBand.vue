@@ -108,4 +108,33 @@ function isExternal(href: string) {
 .contact-cta:hover {
   background: var(--on-dark);
 }
+
+@media screen and (max-width: 900px) {
+  .contact {
+    gap: 24px;
+    margin: 36px 16px 20px;
+    padding: 34px var(--section-pad-x);
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .contact {
+    margin: 28px 12px 16px;
+    padding: 28px 20px;
+  }
+
+  .contact-title {
+    font-size: 26px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .contact-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
 </style>

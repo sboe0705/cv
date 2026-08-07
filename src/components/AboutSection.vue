@@ -41,4 +41,20 @@ const { t } = useLanguage()
   line-height: 1.6;
   text-wrap: pretty;
 }
+
+/* The card's own padding is hard-coded, not --section-pad-x, so it needs its
+   own step down. Same in AiBand, SkillsSection, HobbiesCard, LanguagesCard. */
+@media screen and (max-width: 900px) {
+  .about-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 28px 24px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .about-card {
+    padding: 24px 18px;
+  }
+}
 </style>

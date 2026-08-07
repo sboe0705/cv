@@ -88,4 +88,27 @@ const { t } = useLanguage()
   font-weight: 600;
   line-height: 1;
 }
+
+@media screen and (max-width: 900px) {
+  .skills {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 36px var(--section-pad-x) 12px;
+  }
+
+  .skills-card {
+    padding: 26px 22px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .skills-card {
+    padding: 22px 18px;
+  }
+
+  .skill-groups {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
 </style>

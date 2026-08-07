@@ -15,6 +15,10 @@ body {
   font-weight: 400;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  /* The viewport reports the device width, so iOS Safari would otherwise
+     inflate body text when the phone is turned to landscape. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 h1,

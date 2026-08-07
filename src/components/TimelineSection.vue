@@ -66,4 +66,10 @@ const { progress } = useScrollProgress(list)
   flex-direction: column;
   gap: 14px;
 }
+
+@media screen and (max-width: 560px) {
+  .timeline-title {
+    font-size: 26px;
+  }
+}
 </style>

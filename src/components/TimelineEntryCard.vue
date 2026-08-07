@@ -209,4 +209,48 @@ function toggle() {
   font-weight: 600;
   line-height: 1;
 }
+
+/* Only .entry's columns collapse — .entry-detail's 0fr → 1fr rows are the
+   reveal mechanism and must stay exactly as they are. */
+@media screen and (max-width: 900px) {
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 22px 20px;
+  }
+
+  /* The year rail becomes a header line: year and kind pill side by side. */
+  .entry-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .entry-year {
+    font-size: 28px;
+  }
+
+  .entry-org {
+    font-size: 21px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .entry {
+    padding: 20px 16px;
+  }
+
+  .entry-year {
+    font-size: 26px;
+  }
+
+  .entry-org {
+    font-size: 19px;
+  }
+
+  .entry-bullets {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
 </style>

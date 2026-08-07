@@ -89,4 +89,25 @@ const { t } = useLanguage()
   color: var(--on-dark-90);
   font-size: 12.5px;
 }
+
+@media screen and (max-width: 900px) {
+  .ai-band {
+    padding: 30px 24px;
+  }
+
+  .ai-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .ai-band {
+    padding: 26px 18px;
+  }
+
+  .ai-title {
+    font-size: 24px;
+  }
+}
 </style>

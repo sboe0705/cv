@@ -51,4 +51,12 @@ const options: { value: Lang; label: string }[] = [
   background: var(--accent-base);
   color: var(--on-dark);
 }
+
+/* At 6px padding the button is ~23px tall — just under the 24px minimum target
+   size of WCAG 2.2 SC 2.5.8, and small for a thumb either way. */
+@media screen and (max-width: 900px) {
+  .lang-button {
+    padding: 10px 18px;
+  }
+}
 </style>

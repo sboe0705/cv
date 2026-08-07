@@ -36,11 +36,30 @@ const { lang, t } = useLanguage()
 
 <style scoped>
 .page-shell {
-  width: var(--shell-width);
+  /* At any viewport ≥ --shell-width this is exactly 1180px, i.e. the desktop
+     layout unchanged. Below it the card goes fluid, which is what carries the
+     901–1179px range — the tablet widths the 900px tier does not reach. */
+  width: min(var(--shell-width), 100%);
   margin: 32px auto;
   background: var(--page-card);
   border-radius: var(--radius-shell);
   box-shadow: var(--shadow-shell);
   overflow: hidden;
+}
+
+@media screen and (max-width: 900px) {
+  .page-shell {
+    margin: 16px auto;
+  }
+}
+
+/* On a phone the card's frame costs more than it gives: 16px of margin plus a
+   28px radius eat into a 375px screen. Full bleed instead. */
+@media screen and (max-width: 560px) {
+  .page-shell {
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
 </style>

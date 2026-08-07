@@ -171,4 +171,53 @@ function exportPdf() {
   color: var(--ink-50);
   font-size: 11.5px;
 }
+
+@media screen and (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 40px var(--section-pad-x);
+  }
+
+  /* .facts only wraps once it is in one column, and the desktop row-gap is 0. */
+  .facts {
+    gap: 14px 24px;
+  }
+
+  /* Stacked, the portrait would sit flush left with a 400px hole beside it.
+     Centring the figure balances the column instead; on a phone the image
+     fills the width and the centring is a no-op. */
+  .portrait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .portrait img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 320 / 380;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .hero-title {
+    font-size: 34px;
+  }
+
+  .lead {
+    font-size: 16px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+  }
+
+  /* Side by side while both fit, stacked full-width once they do not. */
+  .btn {
+    flex: 1 1 200px;
+    justify-content: center;
+  }
+}
 </style>

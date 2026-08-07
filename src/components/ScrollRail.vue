@@ -42,4 +42,21 @@ const fillHeight = computed(() => `${(props.progress * 100).toFixed(2)}%`)
   border-radius: var(--radius-pill);
   background: var(--accent-base);
 }
+
+/* Rail plus gutter costs 40px of a phone's width. Slimmed to 20px rather than
+   hidden — the reading-progress cue is what the timeline was built around. */
+@media screen and (max-width: 900px) {
+  .rail {
+    width: 6px;
+    margin-right: 14px;
+  }
+
+  .rail-track {
+    left: 1px;
+  }
+
+  .rail-fill {
+    width: 6px;
+  }
+}
 </style>

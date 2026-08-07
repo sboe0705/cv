@@ -63,4 +63,10 @@ defineProps<{
 .pill-link:hover {
   background: var(--accent-tint);
 }
+
+@media screen and (max-width: 560px) {
+  .hobbies {
+    padding: 22px 18px;
+  }
+}
 </style>
