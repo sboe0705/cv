@@ -67,6 +67,10 @@ export const cv: CvData = {
       },
       timelineTitle: 'Werdegang',
       timelineSub: 'Station anklicken — Details klappen auf, jeweils eine gleichzeitig.',
+      pdf: {
+        experienceTitle: 'Berufserfahrung',
+        educationTitle: 'Ausbildung',
+      },
       filterAll: 'Alle Stationen',
       filterLabel: 'Nach Technologie filtern',
       skillsTitle: 'Skills & Technologien',
@@ -186,6 +190,10 @@ export const cv: CvData = {
       },
       timelineTitle: 'Career',
       timelineSub: 'Click an entry — details expand, one at a time.',
+      pdf: {
+        experienceTitle: 'Professional experience',
+        educationTitle: 'Education',
+      },
       filterAll: 'All entries',
       filterLabel: 'Filter by technology',
       skillsTitle: 'Skills & technologies',

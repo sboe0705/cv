@@ -83,6 +83,13 @@ export interface AiBandStrings {
   note: string
 }
 
+/** Headings the printed document needs and the page has no place for — the
+ *  page shows one merged timeline, the document splits it in two. */
+export interface PdfStrings {
+  experienceTitle: string
+  educationTitle: string
+}
+
 export interface NavStrings {
   profile: string
   timeline: string
@@ -115,6 +122,8 @@ export interface UiStrings {
   ai: AiBandStrings
   timelineTitle: string
   timelineSub: string
+  /** Only the printed document uses these — see CvDocument.vue. */
+  pdf: PdfStrings
   /** Label for the chip that clears the filter. */
   filterAll: string
   /** Accessible name for the filter group — never shown visually. */

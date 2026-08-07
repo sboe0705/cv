@@ -1,7 +1,7 @@
 # Lebenslauf — Sebastian Böhm
 
 An interactive, bilingual (DE/EN) CV website. Its centrepiece is a vertical career timeline:
-each station is a clickable card, and the open one expands into a filled green panel with a
+each station is a clickable card, and the open one expands into a filled blue panel with a
 summary, project bullets, credentials and its technology stack. Alongside it: a technology
 filter, a scroll-progress rail, an "About me" block, an "AI as an everyday tool" band, skills,
 hobbies, languages and a contact band.
@@ -56,10 +56,11 @@ src/
     useTimeline.ts      # which entry is open, which technology chip is active
     useScrollProgress.ts# reading progress for the timeline rail
   components/       # one component per section of the page
+    CvDocument.vue  # the printed CV — hidden on screen, the only thing that goes on paper
   styles/
     tokens.css      # every colour, radius, shadow and layout constant
     base.css        # reset and page ground
-    print.css       # the PDF export
+    print.css       # hides the screen layout when printing
   assets/           # portrait.webp, its portrait.jpg fallback, and the uncropped source
 ```
 
@@ -141,10 +142,16 @@ recolouring the site is a one-file edit.
 
 ## PDF export
 
-The "Als PDF" / "Get the PDF" button calls `window.print()`. `src/styles/print.css` turns the
-page into an A4 document: every station is expanded regardless of what is open on screen, the
-navigation, language switch, filter chips and progress rail are hidden, and the coloured fills
-are flattened so the result does not drown in toner. Printing never changes the on-screen state.
+The "Als PDF" / "Get the PDF" button calls `window.print()` — and what prints is not the page.
+The website is a wide, colourful layout; a curriculum vitae is a document. So printing swaps in
+[`src/components/CvDocument.vue`](src/components/CvDocument.vue): the same content from
+`cv.ts`, set as a compact **two-page** CV — photo top right, career and education in a
+year/content column, plain dashed lists instead of pill clouds, and colour only in the section
+headings. It follows the language switch, and printing never changes the on-screen state.
+
+One thing the site cannot control: the date, page URL and page numbers your browser adds to
+printed pages. Switch them off in the print dialog under *Weitere Einstellungen* →
+*Kopf- und Fußzeilen* (Chrome: *More settings* → *Headers and footers*).
 
 ## Deployment
 

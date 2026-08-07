@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
+import { portraitJpg, portraitWebp } from '@/assets/portrait'
 import { useLanguage } from '@/composables/useLanguage'
 
 const { t } = useLanguage()
@@ -9,11 +10,6 @@ const { t } = useLanguage()
 const mailHref = computed(
   () => t.value.contacts.find((contact) => contact.href.startsWith('mailto:'))?.href ?? '#kontakt',
 )
-
-// Pre-cropped to the 320×380 slot at 2× and stripped of EXIF. WebP first,
-// JPEG as the fallback.
-const portraitWebp = new URL('../assets/portrait.webp', import.meta.url).href
-const portraitJpg = new URL('../assets/portrait.jpg', import.meta.url).href
 
 function exportPdf() {
   window.print()

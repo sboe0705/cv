@@ -2,6 +2,7 @@
 import AboutSection from '@/components/AboutSection.vue'
 import AiBand from '@/components/AiBand.vue'
 import ContactBand from '@/components/ContactBand.vue'
+import CvDocument from '@/components/CvDocument.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import LegalDialog from '@/components/LegalDialog.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
@@ -14,6 +15,10 @@ const { lang, t } = useLanguage()
 </script>
 
 <template>
+  <!-- The printed document. Hidden on screen, and the only thing print.css
+       shows on paper — the shell below is a screen layout. -->
+  <CvDocument />
+
   <div class="page-shell">
     <SiteHeader />
     <main>

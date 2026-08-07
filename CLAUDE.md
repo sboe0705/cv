@@ -101,19 +101,19 @@ highlight, not a second accent, and it only works two ways:
 
 It fails everywhere else: 3.91:1 behind white text, and 1.68:1 against the page ground, where a
 hairline in it is effectively invisible. That is why the secondary button's hover border kept
-`--accent-soft` instead. `print.css` overrides the tech pills back to ink, since a light blue
-on white paper does not exist.
+`--accent-soft` instead. The highlight never appears on paper at all — the printed document is
+a separate component and uses none of it.
 
-Everything else is scoped CSS inside the component it belongs to. The one deliberate exception
-is `src/styles/print.css`, which is global and reaches into component class names to build the
-PDF layout; scoped CSS does not rename classes, so those selectors match. If you rename a class
-in a component, check `print.css`.
+Everything else is scoped CSS inside the component it belongs to. `src/styles/print.css` is
+global but no longer styles anything: it only hides the screen layout — see "The printed
+document" below.
 
 ## The content model
 
 `src/data/types.ts` and `src/data/cv.ts` are plain typed data with **no Vue imports**. That is
-intentional: the content is meant to be reusable outside this site (a PDF generator, a second
-front-end, an API) by importing `cv` and the helpers.
+intentional: the content is meant to be reusable outside this site (a second front-end, an API)
+by importing `cv` and the helpers. `CvDocument.vue` is already the second consumer — the same
+content, laid out for paper instead of a screen.
 
 Key contracts:
 
@@ -144,9 +144,40 @@ Local component state only; no store is warranted at this size.
 - Timeline cards are `role="button"` with `tabindex="0"`, `aria-expanded`, `aria-controls`, and
   Enter/Space handlers — the handoff asks for keyboard access the prototype lacked.
 - The reveal animates `grid-template-rows: 0fr → 1fr` rather than a measured height. The
-  collapsed copy stays in the DOM (so print can expand it) and carries `inert`, which keeps it
-  out of the tab order and the accessibility tree.
+  collapsed copy stays in the DOM for the animation and carries `inert`, which keeps it out of
+  the tab order and the accessibility tree.
 - `--duration-reveal` drops to `0ms` under `prefers-reduced-motion: reduce`.
+
+## The printed document
+
+The "Als PDF" button calls `window.print()`, but printing does **not** reformat the page. The
+page is a 1180px card of tinted panels and pill clouds — flattened onto A4 it ran to nine pages
+with a station per sheet and the skills block clipped at the right edge. So the print path is a
+second rendering instead:
+
+- `src/components/CvDocument.vue` is a plain two-page CV built from the same `cv` data. It is
+  `display: none` on screen — which also keeps it out of the accessibility tree, so the content
+  is not announced twice — and reveals itself in its own `@media print` block.
+- `src/styles/print.css` only sets `@page` and hides `.page-shell`. **The reveal cannot live
+  there:** scoped CSS compiles to `.cv-doc[data-v-…]`, which outspecifies a global `.cv-doc`,
+  and the document would silently stay hidden.
+- Detail level follows `kind`: `work` entries print their bullets, everything else (`study`,
+  `edu`, `cert`) prints summary and credentials only. That is the classic Berufserfahrung /
+  Ausbildung split and needs no extra field on `TimelineEntry`.
+- The document is plain by intent — no fills, no pills, no photo frame. Colour appears only in
+  the section headings and their hairlines (`--accent-base`); everything else is ink on white.
+- It fits **two A4 pages in both languages**, and the type scale (9pt/1.32, `mm` spacing) is
+  what buys that. Adding a section or loosening the leading will push it to three — re-check
+  before and after. To render it without a browser dialog:
+
+  ```bash
+  npm run dev -- --port 5199
+  chromium --headless=new --no-pdf-header-footer --timeout=12000 \
+    --print-to-pdf=check.pdf http://localhost:5199/
+  ```
+
+  (A build served by `npm run preview` does not mount under headless Chrome; use the dev
+  server. If Chrome is a flatpak, it can only write inside `~/Downloads` and friends.)
 
 ## Desktop-only, and the seam for mobile
 

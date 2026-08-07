@@ -41,7 +41,7 @@ function toggle() {
 
       <!-- Collapsed via a 0fr → 1fr grid row, so the reveal animates without
            measuring heights. `inert` keeps the hidden copy out of the tab
-           order and the accessibility tree; print CSS forces it open. -->
+           order and the accessibility tree. -->
       <div :id="detailId" class="entry-detail" :inert="!open || undefined">
         <div class="entry-detail-clip">
           <div class="entry-detail-body">

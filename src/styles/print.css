@@ -1,24 +1,25 @@
 /*
  * PDF export — the "Als PDF" button calls window.print().
  *
- * Everything here is a pure media-query override: printing never mutates
- * component state, so the on-screen page is unchanged after the dialog closes.
- * Selectors reach into scoped-CSS class names deliberately; keep them in sync
- * if a component's class names change.
+ * Printing does not reformat the page: it swaps it for a document written for
+ * paper, `CvDocument.vue`. That document brings its own layout and its own
+ * `@media print` reveal — scoped CSS would outspecify a rule here — so all this
+ * file does is take the screen layout away. Renaming a class in a page
+ * component can no longer break the PDF.
+ *
+ * Printing never mutates component state, so the on-screen page is unchanged
+ * after the dialog closes.
  */
 @page {
   size: A4;
-  margin: 14mm;
+  margin: 16mm;
 }
 
 @media print {
   :root {
-    /* Fills must survive the printer's colour stripping. */
+    /* The accent headings must survive the printer's colour stripping. */
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
-    --shell-width: 100%;
-    --section-pad-x: 0px;
-    --duration-reveal: 0ms;
   }
 
   body {
@@ -26,83 +27,6 @@
   }
 
   .page-shell {
-    width: 100%;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    overflow: visible;
-  }
-
-  /* Interactive chrome has no meaning on paper. */
-  .nav,
-  .lang-switch,
-  .filter,
-  .rail,
-  .actions,
-  .legal-link,
-  .legal-dialog,
-  .contact-cta {
-    display: none !important;
-  }
-
-  /* Every station is expanded, whatever `openId` happens to be. */
-  .entry-detail {
-    grid-template-rows: 1fr !important;
-  }
-
-  .entry-detail-body {
-    opacity: 1 !important;
-  }
-
-  /* Closed cards keep the light ground; only the truly open one stays green,
-     which would waste toner across five entries. Flatten them all. */
-  .entry,
-  .entry.is-open {
-    background: var(--card-ground) !important;
-    color: var(--ink) !important;
-    box-shadow: none !important;
-    border: 1px solid var(--hairline-14);
-  }
-
-  .entry.is-open .entry-kind {
-    background: var(--accent-tint) !important;
-    color: var(--accent-base) !important;
-  }
-
-  .entry-bullet {
-    background: var(--accent-tint) !important;
-  }
-
-  /* The highlight is a light blue for dark panels; on a white sheet the
-     flattened entries need ink text and a hairline instead. */
-  .entry-tech-pill {
-    border-color: var(--hairline-18) !important;
-    color: var(--ink) !important;
-  }
-
-  /* Keep a station on one page where it fits. */
-  .entry {
-    break-inside: avoid;
-  }
-
-  .ai,
-  .about,
-  .skills,
-  .contact {
-    break-inside: avoid;
-  }
-
-  .site-header {
-    padding-inline: 0;
-  }
-
-  .contact {
-    margin-inline: 0;
-  }
-
-  a[href^='http']::after {
-    content: ' (' attr(href) ')';
-    font-size: 10px;
-    font-weight: 400;
+    display: none;
   }
 }
