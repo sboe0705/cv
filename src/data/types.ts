@@ -38,7 +38,7 @@ export interface TimelineEntry {
   year: string
   kind: EntryKind
   org: string
-  /** Technology names, matched verbatim against `meta.filterChips`. */
+  /** Technology names, rendered as pills on the expanded entry. */
   tech: string[]
   content: Localized<EntryContent>
 }
@@ -124,10 +124,6 @@ export interface UiStrings {
   timelineSub: string
   /** Only the printed document uses these — see CvDocument.vue. */
   pdf: PdfStrings
-  /** Label for the chip that clears the filter. */
-  filterAll: string
-  /** Accessible name for the filter group — never shown visually. */
-  filterLabel: string
   skillsTitle: string
   skillGroups: SkillGroup[]
   hobbiesTitle: string
@@ -146,9 +142,6 @@ export interface CvMeta {
   defaultLang: Lang
   /** Entry `id` expanded on first load. */
   openByDefault: string
-  /** Curated technology filter chips, in display order. Each must match a
-   *  `TimelineEntry.tech` value exactly. */
-  filterChips: string[]
 }
 
 export interface CvData {

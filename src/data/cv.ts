@@ -19,16 +19,6 @@ export const cv: CvData = {
     name: 'Sebastian Böhm',
     defaultLang: 'de',
     openByDefault: 'msg',
-    filterChips: [
-      'Java',
-      'CI/CD',
-      'AWS',
-      'DevOps',
-      'OSGi',
-      'SQL',
-      'Scrum',
-      'J2EE / EJB3',
-    ],
   },
 
   ui: {
@@ -66,13 +56,11 @@ export const cv: CvData = {
         note: 'Auch diese Seite ist mit KI-Unterstützung entstanden — Inhalte und Entscheidungen von mir.',
       },
       timelineTitle: 'Werdegang',
-      timelineSub: 'Station anklicken — Details klappen auf, jeweils eine gleichzeitig.',
+      timelineSub: 'Station anklicken — Details klappen auf.',
       pdf: {
         experienceTitle: 'Berufserfahrung',
         educationTitle: 'Ausbildung',
       },
-      filterAll: 'Alle Stationen',
-      filterLabel: 'Nach Technologie filtern',
       skillsTitle: 'Skills & Technologien',
       skillGroups: [
         {
@@ -191,13 +179,11 @@ export const cv: CvData = {
         note: 'This page was built with AI assistance too — content and decisions are mine.',
       },
       timelineTitle: 'Career',
-      timelineSub: 'Click an entry — details expand, one at a time.',
+      timelineSub: 'Click an entry — details expand.',
       pdf: {
         experienceTitle: 'Professional experience',
         educationTitle: 'Education',
       },
-      filterAll: 'All entries',
-      filterLabel: 'Filter by technology',
       skillsTitle: 'Skills & technologies',
       skillGroups: [
         {
@@ -541,9 +527,4 @@ export function resolveEntries(lang: Lang, entries: TimelineEntry[] = cv.entries
     .slice()
     .reverse()
     .map((entry) => resolveEntry(entry, lang))
-}
-
-/** The entries whose `tech` contains `chip`; all of them when `chip` is null. */
-export function filterByTech(chip: string | null, entries: TimelineEntry[] = cv.entries) {
-  return chip === null ? entries : entries.filter((entry) => entry.tech.includes(chip))
 }

@@ -14,7 +14,7 @@
      shirt. Leading with the design's own blue ties the page to the portrait
      and fixes an accessibility defect — white 14px bold on the old green was
      3.47:1, below the 4.5:1 WCAG AA threshold. Every value below clears it. */
-  --accent-base: #17607f; /* primary button, rail fill, active chip/lang, contact band — 6.96:1 on white */
+  --accent-base: #17607f; /* primary button, rail fill, language switch, contact band — 6.96:1 on white */
   --accent-deep: #10485e; /* open timeline entry, AI band, primary button hover — 9.95:1 on white */
   --accent-soft: #2f9fc9; /* secondary button hover border — decorative only, never behind text */
   --accent-tint: #e7f2f8; /* about + languages cards, kicker, kind pill, lang switch */

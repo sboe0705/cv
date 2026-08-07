@@ -81,7 +81,7 @@ The colour tokens are named by role:
 
 | Token | Role |
 | --- | --- |
-| `--accent-base` | primary button, rail fill, active chip, language switch, contact band, labels and headings on tints |
+| `--accent-base` | primary button, rail fill, language switch, contact band, labels and headings on tints, printed section headings |
 | `--accent-deep` | open timeline entry, AI band, primary button hover |
 | `--accent-soft` | secondary button hover border — decorative, never sits behind text |
 | `--accent-tint` | About and Languages cards, kicker, kind pill, language switch ground |
@@ -125,8 +125,8 @@ Key contracts:
   handled by `resolveEntries()`. Do not reorder the array to change display order.
 - `resolveEntry()` flattens a `TimelineEntry` to one language, producing the `ResolvedEntry`
   that components render. Components should never index into `entry.content[lang]` themselves.
-- Every `meta.filterChips` string must appear verbatim in some entry's `tech` array — nothing
-  enforces this, and a typo silently produces a chip that filters everything away.
+- `tech` is a free list — the strings are rendered, never matched against anything. There used
+  to be a `meta.filterChips` array that had to match them verbatim; see below.
 
 ## State
 
@@ -136,8 +136,19 @@ Local component state only; no store is warranted at this size.
 | --- | --- | --- |
 | `lang` | `useLanguage` | Module-level ref — the language belongs to the page, not a component. Persisted to `localStorage` under `cv.lang`, and mirrored to `document.documentElement.lang`. |
 | `openId` | `useTimeline` | Exactly one entry open; clicking the open one collapses it. Defaults to `cv.meta.openByDefault`. |
-| `activeChip` | `useTimeline` | Filtering deliberately does **not** close the open entry — a filtered-out entry simply is not rendered and returns expanded when the filter clears. |
 | `progress` | `useScrollProgress` | `clamp01((innerHeight * 0.62 - rect.top) / rect.height)`, on passive rAF-throttled scroll/resize listeners removed on unmount. |
+
+### The technology filter is gone, deliberately
+
+The handoff specified a row of technology chips above the timeline, and it was built. It is
+removed as of this commit — do not restore it from the design without new reasoning. With five
+stations the numbers did not work: `CI/CD`, `AWS`, `DevOps`, `OSGi` and `J2EE / EJB3` each
+selected exactly **one** station, which is a worse way of clicking that station, and `Java`
+selected **four of five**, hiding only the Abitur. Grouping the chips into themes does not help
+— a "Cloud" chip still selects two. The `tech` pills on each expanded entry carry the same
+information without a control, and without the unenforced invariant that every chip string had
+to appear verbatim in an entry's `tech` array — a rename nearly produced a chip that filtered
+every station away.
 
 ## Interaction details worth preserving
 

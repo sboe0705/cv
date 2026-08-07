@@ -2,9 +2,9 @@
 
 An interactive, bilingual (DE/EN) CV website. Its centrepiece is a vertical career timeline:
 each station is a clickable card, and the open one expands into a filled blue panel with a
-summary, project bullets, credentials and its technology stack. Alongside it: a technology
-filter, a scroll-progress rail, an "About me" block, an "AI as an everyday tool" band, skills,
-hobbies, languages and a contact band.
+summary, project bullets, credentials and its technology stack. Alongside it: a scroll-progress
+rail, an "About me" block, an "AI as an everyday tool" band, skills, hobbies, languages and a
+contact band.
 
 Built with **Vue 3** (SFC, `<script setup>`, Composition API), **TypeScript** and **Vite**.
 No backend — all content is static, typed data.
@@ -78,7 +78,7 @@ the timeline reverses it for display, so a new job goes at the *end*:
   year: '2027',
   kind: 'work',                // work | study | edu | cert
   org: 'ACME GmbH',
-  tech: ['Java', 'AWS'],       // must match filter chips verbatim to be filterable
+  tech: ['Java', 'AWS'],       // shown as pills on the expanded entry and in the PDF
   content: {
     de: { period: 'seit 2027', role: '…', place: '…', summary: '…', bullets: ['…'], credentials: '' },
     en: { period: 'since 2027', role: '…', place: '…', summary: '…', bullets: ['…'], credentials: '' },
@@ -88,9 +88,6 @@ the timeline reverses it for display, so a new job goes at the *end*:
 
 `credentials` may be an empty string and `bullets` an empty array — both sections are then
 simply not rendered.
-
-**Add a filter chip.** Add the string to `meta.filterChips`. It must match a `tech` value on at
-least one entry exactly, otherwise the chip filters everything away.
 
 **Change which entry is open on load.** `meta.openByDefault` — an entry `id`.
 

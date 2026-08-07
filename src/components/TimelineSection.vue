@@ -2,7 +2,6 @@
 import { ref, toRef } from 'vue'
 
 import ScrollRail from '@/components/ScrollRail.vue'
-import TechFilter from '@/components/TechFilter.vue'
 import TimelineEntryCard from '@/components/TimelineEntryCard.vue'
 import { useLanguage } from '@/composables/useLanguage'
 import { useScrollProgress } from '@/composables/useScrollProgress'
@@ -12,7 +11,7 @@ import type { Lang } from '@/data/types'
 const props = defineProps<{ lang: Lang }>()
 
 const { t } = useLanguage()
-const { activeChip, entries, isOpen, toggle, selectChip } = useTimeline(toRef(props, 'lang'))
+const { entries, isOpen, toggle } = useTimeline(toRef(props, 'lang'))
 
 const list = ref<HTMLElement | null>(null)
 const { progress } = useScrollProgress(list)
@@ -21,16 +20,8 @@ const { progress } = useScrollProgress(list)
 <template>
   <section class="timeline">
     <div class="timeline-head">
-      <div>
-        <h2 class="timeline-title">{{ t.timelineTitle }}</h2>
-        <p class="timeline-sub">{{ t.timelineSub }}</p>
-      </div>
-      <TechFilter
-        :active="activeChip"
-        :all-label="t.filterAll"
-        :group-label="t.filterLabel"
-        @select="selectChip"
-      />
+      <h2 class="timeline-title">{{ t.timelineTitle }}</h2>
+      <p class="timeline-sub">{{ t.timelineSub }}</p>
     </div>
 
     <div class="timeline-body">
@@ -50,11 +41,6 @@ const { progress } = useScrollProgress(list)
 
 <style scoped>
 .timeline-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
   padding: 8px var(--section-pad-x) 16px;
 }
 
