@@ -61,6 +61,16 @@ active filter chip. All current fills clear AA — `--accent-base` is 6.96:1 and
 Because green is gone, the token names are roles (`--accent-*`, `--support-*`), not hues. Keep
 it that way: a token called `--green-base` holding a blue is how a palette rots.
 
+### The portrait source
+
+`src/assets/portrait-source.jpg` is the uncropped original (1789×2683) the two hero images and
+every measurement above were derived from. It is kept only so a re-crop needs nothing external.
+
+**Nothing may import it.** Vite bundles what is imported, and the source still carries its
+camera EXIF (make, model, exposure — no GPS), whereas the shipped `portrait.webp` /
+`portrait.jpg` are stripped. Importing it would both quadruple the payload and start shipping
+metadata the README says the site does not ship.
+
 ## Styling
 
 All colours, radii, shadows and layout constants live in `src/styles/tokens.css`. **Component

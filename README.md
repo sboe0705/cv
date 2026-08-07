@@ -60,7 +60,7 @@ src/
     tokens.css      # every colour, radius, shadow and layout constant
     base.css        # reset and page ground
     print.css       # the PDF export
-  assets/           # portrait.webp and its portrait.jpg fallback
+  assets/           # portrait.webp, its portrait.jpg fallback, and the uncropped source
 ```
 
 ## Editing the content
@@ -104,7 +104,9 @@ then flag every `Localized<T>` that owes a translation — the `ui` block and ea
 of EXIF, so no camera model or timestamp ships with the page.
 
 To replace it, regenerate both files at 640×760 from the original and keep the filenames — no
-code change needed. The full-resolution original is not kept in this repository.
+code change needed. The original is `src/assets/portrait-source.jpg` (1789×2683). Nothing
+imports it, so it is never bundled — it sits there purely so a re-crop does not need a file
+from outside the repository.
 
 ## Impressum and privacy
 
