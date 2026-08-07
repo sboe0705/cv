@@ -26,7 +26,7 @@ export const cv: CvData = {
       'DevOps',
       'OSGi',
       'SQL',
-      'Scrum / Kanban',
+      'Scrum',
       'J2EE / EJB3',
     ],
   },
@@ -81,12 +81,13 @@ export const cv: CvData = {
         },
         {
           name: 'Frameworks',
-          items: ['JBoss', 'RichFaces', 'JPA / Hibernate', 'OSGi', 'GWT'],
+          items: ['JBoss', 'Spring / Spring Boot', 'JPA / Hibernate', 'OSGi', 'GWT'],
         },
         {
           name: 'Build & Betrieb',
           items: [
             'Maven',
+            'Ant',
             'Continuous Integration',
             'Docker',
             'Kubernetes',
@@ -104,6 +105,7 @@ export const cv: CvData = {
             'Kanban',
             'Anforderungsanalyse',
             'Modellgetriebene Entwicklung',
+            'Testgetriebene Entwicklung',
             'Komponentenverantwortung',
           ],
         },
@@ -204,12 +206,13 @@ export const cv: CvData = {
         },
         {
           name: 'Frameworks',
-          items: ['JBoss', 'RichFaces', 'JPA / Hibernate', 'OSGi', 'GWT'],
+          items: ['JBoss', 'Spring / Spring Boot', 'JPA / Hibernate', 'OSGi', 'GWT'],
         },
         {
           name: 'Build & operations',
           items: [
             'Maven',
+            'Ant',
             'Continuous integration',
             'Docker',
             'Kubernetes',
@@ -227,6 +230,7 @@ export const cv: CvData = {
             'Kanban',
             'Requirements analysis',
             'Model-driven development',
+            'Test-driven development',
             'Component ownership',
           ],
         },
@@ -294,7 +298,7 @@ export const cv: CvData = {
           summary:
             'Schulabschluss mit naturwissenschaftlich-mathematischem Schwerpunkt — die Grundlage für das anschließende duale Studium der Informationstechnik.',
           bullets: [],
-          credentials: '',
+          credentials: 'Abiturnote 1,9',
         },
         en: {
           period: 'until June 2004',
@@ -303,7 +307,7 @@ export const cv: CvData = {
           summary:
             'Secondary school diploma with a maths and science focus — the basis for the cooperative degree in information technology that followed.',
           bullets: [],
-          credentials: '',
+          credentials: 'Abitur grade 1.9',
         },
       },
     },
@@ -313,11 +317,11 @@ export const cv: CvData = {
       year: '2005',
       kind: 'study',
       org: 'Alcatel-Lucent Deutschland AG',
-      tech: ['C', 'C++', 'Java', 'Linux', 'Netzwerktechnik', 'Datenbanken'],
+      tech: ['C++', 'Java', 'Linux', 'TCP/IP', 'DBMS'],
       content: {
         de: {
           period: 'Okt 2005 – Sep 2008',
-          role: 'Duales Studium Informationstechnik — Diplom-Ingenieur (BA)',
+          role: 'Duales Studium Informationstechnik, Netz- und Softwaretechnik — Diplom-Ingenieur (BA)',
           place: 'Stuttgart',
           summary:
             'Dreijähriges duales Studium an der Staatlichen Studienakademie Stuttgart, mit Praxisphasen in vier Entwicklungsbereichen des Konzerns — darunter Bell Labs Deutschland und ein Einsatz in den USA.',
@@ -329,11 +333,11 @@ export const cv: CvData = {
             'Diplomarbeit: Traffic Shaping und Scheduling für konkurrierende Datenströme aus XEN-basierten virtuellen Maschinen zur Umsetzung von QoS-Anforderungen',
           ],
           credentials:
-            'Abschlüsse: Ingenieurassistent (BA) 2007 · Diplom-Ingenieur (BA) Informationstechnik 2008 · BSc (Hons) Engineering (Information Technology), The Open University, 2008',
+            'Abschlüsse: Ingenieurassistent (BA) 2007 · Diplom-Ingenieur (BA) Informationstechnik 2008, Gesamtnote 1,6 · BSc (Hons) Engineering (Information Technology), The Open University, 2008',
         },
         en: {
           period: 'Oct 2005 – Sep 2008',
-          role: 'Cooperative degree in information technology — Dipl.-Ing. (BA)',
+          role: 'Cooperative degree in information technology, network and software engineering — Dipl.-Ing. (BA)',
           place: 'Stuttgart, Germany',
           summary:
             'Three-year cooperative degree at the Stuttgart state academy, with practical terms in four of the company’s engineering units — including Bell Labs Germany and an assignment in the USA.',
@@ -345,7 +349,7 @@ export const cv: CvData = {
             'Diploma thesis: traffic shaping and scheduling for competing data streams from XEN-based virtual machines to meet QoS requirements',
           ],
           credentials:
-            'Awards: Engineering assistant (BA) 2007 · Dipl.-Ing. (BA) in information technology 2008 · BSc (Hons) Engineering (Information Technology), The Open University, 2008',
+            'Awards: Engineering assistant (BA) 2007 · Dipl.-Ing. (BA) in information technology 2008, final grade 1.6 (German scale, 1.0 best) · BSc (Hons) Engineering (Information Technology), The Open University, 2008',
         },
       },
     },
@@ -355,7 +359,18 @@ export const cv: CvData = {
       year: '2008',
       kind: 'work',
       org: 'Accelsis Technologies GmbH',
-      tech: ['Java', 'J2EE / EJB3', 'Hibernate', 'GWT', 'Magnolia CMS', 'Maven', 'JUnit'],
+      tech: [
+        'Java',
+        'J2EE / EJB3',
+        'Spring',
+        'Hibernate',
+        'GWT',
+        'Magnolia CMS',
+        'Maven',
+        'JUnit',
+        'Test-Driven Development',
+        'Scrum',
+      ],
       content: {
         de: {
           period: 'Okt 2008 – Nov 2010',
@@ -395,13 +410,17 @@ export const cv: CvData = {
       org: 'GEBIT Solutions',
       tech: [
         'Java',
-        'JBoss',
-        'JSF / RichFaces',
+        'Spring',
         'JPA',
         'OSGi',
         'SQL',
+        'Ant',
+        'Docker',
         'Selenium',
-        'Scrum / Kanban',
+        'Model-Driven Development',
+        'Test-Driven Development',
+        'Requirement Engineering',
+        'Scrum',
       ],
       content: {
         de: {
@@ -440,7 +459,22 @@ export const cv: CvData = {
       year: '2017',
       kind: 'work',
       org: 'msg life',
-      tech: ['Java', 'CI/CD', 'OIDC', 'AWS', 'DevOps', 'Maven'],
+      tech: [
+        'Java',
+        'Spring Boot',
+        'JBoss',
+        'Hibernate',
+        'SQL',
+        'Model-Driven Development',
+        'CI/CD',
+        'Maven',
+        'OIDC',
+        'AWS',
+        'Docker',
+        'Kubernetes',
+        'DevOps',
+        'Scrum',
+      ],
       content: {
         de: {
           period: 'seit 2017',
