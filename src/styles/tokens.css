@@ -1,6 +1,6 @@
 /*
- * Design tokens — taken verbatim from the handoff's token tables
- * (design_handoff_lebenslauf_vue/README.md, "Design Tokens").
+ * Design tokens — taken verbatim from the design handoff's token tables.
+ * The handoff itself is no longer in the repository; see CLAUDE.md, "The design".
  *
  * Component CSS must reference these variables, never raw hex values. That is
  * what makes a palette change a one-file change.

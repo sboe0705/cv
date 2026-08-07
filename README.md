@@ -60,8 +60,7 @@ src/
     tokens.css      # every colour, radius, shadow and layout constant
     base.css        # reset and page ground
     print.css       # the PDF export
-  assets/portrait.svg
-design_handoff_lebenslauf_vue/   # the original design handoff — reference, not built code
+  assets/           # portrait.webp and its portrait.jpg fallback
 ```
 
 ## Editing the content
@@ -105,7 +104,7 @@ then flag every `Localized<T>` that owes a translation — the `ui` block and ea
 of EXIF, so no camera model or timestamp ships with the page.
 
 To replace it, regenerate both files at 640×760 from the original and keep the filenames — no
-code change needed. The source lives in `design_handoff_lebenslauf_vue/sebastian-boehm.jpg`.
+code change needed. The full-resolution original is not kept in this repository.
 
 ## Impressum and privacy
 
@@ -132,9 +131,8 @@ translation. Neither has been reviewed by a lawyer — see the checklist below.
 
 The palette is led by a steel blue (`#17607f`) with a graphite second voice and a light
 cornflower highlight (`#a8c4ee`) sampled from the shirt — all three drawn from the portrait.
-This is a deliberate departure
-from the design handoff, which led with green; see `CLAUDE.md` for the reasoning and the
-accessibility measurements behind it.
+This is a deliberate departure from the original design, which led with green; see `CLAUDE.md`
+for the reasoning and the accessibility measurements behind it.
 
 Everything lives in `src/styles/tokens.css`. No component contains a raw hex value, so
 recolouring the site is a one-file edit.
@@ -166,10 +164,11 @@ place. Two things are worth a look before or shortly after going live:
 
 ## Design source
 
-`design_handoff_lebenslauf_vue/` holds the original developer handoff: the specification
-(`README.md`), the content in JSON, and an HTML design prototype. The prototype is a design
-reference only — it is written against a proprietary template runtime and is not imported by
-anything in `src/`. See `CLAUDE.md` for how the handoff maps onto this code.
+The site was built from a developer handoff — a design specification, the content in JSON and
+an HTML prototype. It has served its purpose and is no longer part of the repository; the
+design now lives in `src/styles/tokens.css` and the components, the content in
+`src/data/cv.ts`. The handoff remains in the git history (up to commit `2e64efc`) if it is ever
+needed again.
 
 The CV content was transcribed from reference letters and certificates. Those documents are
 deliberately **not** part of this repository and must not be published on the site.

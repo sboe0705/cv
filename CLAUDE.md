@@ -22,24 +22,24 @@ There is no test suite and no linter configured. The type-checker is the gate th
 `./build.sh` (or `npm run build`) must pass before a change is done. `build.sh` mirrors the
 GitHub Pages workflow step for step, so use it to reproduce a CI failure locally.
 
-## The design handoff is the specification
+## The design
 
-`design_handoff_lebenslauf_vue/` contains the approved design: `README.md` (final colours,
-typography, spacing, interaction states, state model), `cv-data.json` (the source content) and
-`Lebenslauf.dc.html` (a visual prototype).
+The site was built from a developer handoff — a design specification, the content as JSON, and
+an HTML prototype written against a proprietary streaming-template runtime. That directory
+(`design_handoff_lebenslauf_vue/`) has been **removed from the repository**: it is fully
+absorbed into this code and now lives only in git history, up to and including commit
+`2e64efc`. If a question about the original intent ever comes up, read it there
+(`git show 2e64efc:design_handoff_lebenslauf_vue/README.md`) rather than restoring it to the
+working tree.
 
-Two rules:
+What carries over from it, and must be respected:
 
-1. **The prototype is not portable code.** It is written against a proprietary streaming-template
-   runtime (`<x-dc>`, `<sc-for>`, `<sc-if>`, `class Component extends DCLogic`). Read it as a
-   spec — markup structure and inline style values — and express it in idiomatic Vue. Never port
-   the runtime, and never import anything from that directory into `src/`.
-2. **Only option `2a` in section `#t2` is the design.** Option `2b` (berry/blue) and the three
-   `#t1` studies (red palette) are history. `modernist-styles.css` and `image-slot.js` are
-   background reading only.
-
-The handoff declares the design final and high-fidelity: take its numbers verbatim rather than
-rounding them to a scale. That is why the CSS is full of values like `13.5px` and `1.5px`.
+- **The measurements are exact, not a scale.** The design was declared final and high-fidelity,
+  so its numbers were taken verbatim. That is why the CSS is full of values like `13.5px` and
+  `1.5px` — don't tidy them into a spacing scale.
+- **`src/styles/tokens.css` is the token table**, and together with the multi-column
+  declarations listed under "Desktop-only" below it is now the entire layout specification.
+- **`src/data/cv.ts` is the content**, superseding the handoff's `cv-data.json`.
 
 ### The one deliberate deviation: the palette
 
@@ -47,7 +47,7 @@ Every metric follows the handoff. The **colours do not**, and this was an explic
 the site's owner after the real portrait arrived — do not "restore" the green thinking it is
 drift.
 
-The handoff's 2a led with green (`#2f9c62`) and used blue as a second voice. The photograph
+The approved design led with green (`#2f9c62`) and used blue as a second voice. The photograph
 contains **no green whatsoever** (measured: 0.00% green pixels against 7.36% blue) — it is a
 charcoal suit, a silver tie and a cornflower shirt. So blue was promoted to the primary voice
 and green retired entirely; the Skills and Hobbies cards, previously green tint, now sit on a
