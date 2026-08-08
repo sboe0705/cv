@@ -155,8 +155,9 @@ printed pages. Switch them off in the print dialog under *Weitere Einstellungen*
 Pushing to `main` publishes to GitHub Pages via `.github/workflows/deploy.yml`. Enable it once
 under **Settings → Pages → Source → GitHub Actions**.
 
-The production build uses `/cv/` as its base path (matching the repository name) — see
-`vite.config.ts`. If you rename the repository or move to a custom domain, change `base` there.
+The production build uses `/curriculum-vitae/` as its base path (matching the repository name)
+— see `vite.config.ts`. If you rename the repository or move to a custom domain, change `base`
+there.
 
 ## Before publishing
 
